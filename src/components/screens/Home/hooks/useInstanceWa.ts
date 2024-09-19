@@ -10,11 +10,13 @@ export function useInstanceWa() {
   const { alertNotifyConfigs, setAlertNotifyConfigs } = useContext(AlertContext)
 
   const [connection, setConnection] = useState<IConnection | null>(null)
+  const [connectionStatusText, setConnectionStatusText] = useState<string>('')
 
   async function getInstanceWa() {
     getInstanceWaService(httpClientProvider)
       .then(({ data }) => {
         setConnection(data.item.connection)
+        setConnectionStatusText(data.item.connection.status)
       })
       .catch((err) => {
         setAlertNotifyConfigs({
@@ -32,5 +34,6 @@ export function useInstanceWa() {
 
   return {
     connection,
+    connectionStatusText,
   }
 }

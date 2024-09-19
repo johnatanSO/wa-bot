@@ -6,7 +6,7 @@ import { useInstanceWa } from './hooks/useInstanceWa'
 import { WaConnectionStatus } from '@/models/enums/WaConnectionStatus'
 
 export function HomeComponent() {
-  const { connection } = useInstanceWa()
+  const { connection, connectionStatusText } = useInstanceWa()
 
   return (
     <div className={style.homeContainer}>
@@ -20,7 +20,7 @@ export function HomeComponent() {
           />
         )}
 
-        <p>Conectado</p>
+        <p>{connectionStatusText}</p>
       </div>
     </div>
   )
