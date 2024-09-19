@@ -1,3 +1,3 @@
 export function HomeComponent() {
-  return <></>
+  return <h1></h1>
 }

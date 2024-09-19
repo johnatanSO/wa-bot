@@ -21,7 +21,6 @@ button {
 }
 
 body {
-
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
@@ -31,6 +30,9 @@ body {
     -moz-appearance: textfield;
     appearance: textfield;
   }
+
+  background: $gray-color-500;
+  color: $gray-color-100;
 }
 
 a {
