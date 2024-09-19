@@ -1,3 +1,9 @@
+import { useEffect } from 'react'
+
 export function HomeComponent() {
-  return <h1></h1>
+  useEffect(() => {
+    console.log('Connect qr Code')
+  }, [])
+
+  return <h1>Home</h1>
 }
