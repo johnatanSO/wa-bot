@@ -1,13 +1,13 @@
 
 
 import cors from 'cors'
-import '../../container'
+// import '../../container'
 import 'reflect-metadata'
 import 'express-async-errors'
 import * as dotenv from 'dotenv'
 import { routes } from './routes'
 import { Mongoose } from 'mongoose'
-import dbConnection from '../mongodb'
+// import dbConnection from '../mongodb'
 import { AppError } from '../../errors/AppError' 
 import express, { Express, NextFunction, Request, Response } from 'express'
 
@@ -19,7 +19,7 @@ interface CustomExpress extends Express {
 
 const app: CustomExpress = express()
 
-app.mongo = dbConnection
+// app.mongo = dbConnection
 
 app.use(express.json())
 app.use(cors())
