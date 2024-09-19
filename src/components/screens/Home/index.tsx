@@ -1,9 +1,16 @@
-import { useEffect } from 'react'
+'use client'
+
+import Image from 'next/image'
+import style from './Home.module.scss'
+import { useInstanceWa } from './hooks/useInstanceWa'
 
 export function HomeComponent() {
-  useEffect(() => {
-    console.log('Connect qr Code')
-  }, [])
+  const { qrcodeUrl } = useInstanceWa()
 
-  return <h1>Home</h1>
+  return (
+    <div className={style.homeContainer}>
+      <span>1</span>
+      <Image src={qrcodeUrl || ''} alt="qrcode" />
+    </div>
+  )
 }
