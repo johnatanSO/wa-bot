@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",  
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -21,12 +21,13 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.1.0",
     "reflect-metadata": "^0.1.13",
+    "socket.io": "^4.7.5",
     "tsyringe": "^4.8.0"
   },
   "devDependencies": {
+    "@rocketseat/eslint-config": "^1.2.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
-    "@rocketseat/eslint-config": "^1.2.0",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.5",
     "@types/jsonwebtoken": "^9.0.2",

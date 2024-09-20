@@ -11,5 +11,15 @@
     flex-direction: column;
 
     gap: 2rem;
+
+    .connectionQrCode {
+      background: $white-color;
+      padding: 0.5rem;
+      border-radius: 20px;
+    }
+
+    .connectionStatus {
+      font-weight: 600;
+    }
   }
 }

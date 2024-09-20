@@ -14,14 +14,17 @@ export function HomeComponent() {
       <div className={style.connectionContainer}>
         {connection?.status === WaConnectionStatus.PENDING && (
           <Image
-            width={350}
-            height={350}
-            src={connection.qrcode || ''}
+            width={400}
+            height={400}
+            src={connection?.qrcode || ''}
             alt="qrcode"
+            className={style.connectionQrCode}
           />
         )}
 
-        <p>{formatConnectionStatus(connection?.status || null)}</p>
+        <b className={style.connectionStatus}>
+          {formatConnectionStatus(connection?.status || null)}
+        </b>
       </div>
     </div>
   )
