@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import '@/styles/global.scss'
 import { Header } from '@/components/layout/Header'
+import { AlertContextComponent } from '@/contexts/alertContext'
 
 export const metadata: Metadata = {
   title: 'Whatsapp Bot',
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        <Header />
+        <AlertContextComponent>
+          <Header />
 
-        {children}
+          {children}
+        </AlertContextComponent>
       </body>
     </html>
   )

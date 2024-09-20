@@ -3,4 +3,13 @@
 .homeContainer {
   padding: 3rem 8rem;
   flex: 1;
+
+  .connectionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 2rem;
+  }
 }

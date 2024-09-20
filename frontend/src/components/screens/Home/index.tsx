@@ -4,13 +4,14 @@ import Image from 'next/image'
 import style from './Home.module.scss'
 import { useInstanceWa } from './hooks/useInstanceWa'
 import { WaConnectionStatus } from '@/models/enums/WaConnectionStatus'
+import { formatConnectionStatus } from '@/utils/formatConnectionStatus'
 
 export function HomeComponent() {
-  const { connection, connectionStatusText } = useInstanceWa()
+  const { connection } = useInstanceWa()
 
   return (
     <div className={style.homeContainer}>
-      <div className={style.qrcodeContainer}>
+      <div className={style.connectionContainer}>
         {connection?.status === WaConnectionStatus.PENDING && (
           <Image
             width={350}
@@ -20,7 +21,7 @@ export function HomeComponent() {
           />
         )}
 
-        <p>{connectionStatusText}</p>
+        <p>{formatConnectionStatus(connection?.status || null)}</p>
       </div>
     </div>
   )
