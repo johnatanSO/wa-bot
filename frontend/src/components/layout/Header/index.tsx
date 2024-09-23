@@ -4,7 +4,7 @@ import style from './Header.module.scss'
 export function Header() {
   return (
     <header className={style.headerContainer}>
-      <h1>--</h1>
+      <h1>Chat bot</h1>
 
       <nav>
         <ul>
@@ -12,14 +12,11 @@ export function Header() {
             <Link href="/">Início</Link>
           </li>
           <li>
-            <Link href="about">Sobre</Link>
-          </li>
-          <li>
-            <Link href="howToUse">Como usar</Link>
+            <Link href="/about">Sobre</Link>
           </li>
 
           <li>
-            <Link href="/authenticate" className={style.loginAnchor}>
+            <Link href="/login" className={style.loginAnchor}>
               Login
             </Link>
           </li>

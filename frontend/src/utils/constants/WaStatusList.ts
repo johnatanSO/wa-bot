@@ -1,5 +1,5 @@
 export const WaStatusList = [
-  { value: 'pending', text: 'Pendente' },
-  { value: 'connected', text: 'Conectado' },
+  { value: 'pending', text: 'Conexão pendente' },
+  { value: 'connected', text: 'Conectado com sucesso' },
   { value: 'disconnected', text: 'Desconectado' },
 ]

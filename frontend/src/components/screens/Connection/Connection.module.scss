@@ -1,0 +1,53 @@
+@import '@/styles/colors.scss';
+
+.homeContainer {
+  padding: 3rem 8rem;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .connectionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 3rem;
+
+    h2 {
+      font-weight: 600;
+      font-size: 3rem;
+    }
+
+    .connectionQrCode {
+      background: $white-color;
+      padding: 0.5rem;
+      border-radius: 20px;
+    }
+
+    .connectionUser {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .connectionStatus {
+      font-weight: 600;
+
+      &.connected {
+        color: $green-color-100;
+      }
+
+      &.pending {
+        color: $blue-color-100;
+      }
+
+      &.disconnected {
+        color: $red-color-100;
+      }
+    }
+  }
+}

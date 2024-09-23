@@ -1,31 +1,36 @@
-'use client'
-
-import Image from 'next/image'
+import Link from 'next/link'
 import style from './Home.module.scss'
-import { useInstanceWa } from './hooks/useInstanceWa'
-import { WaConnectionStatus } from '@/models/enums/WaConnectionStatus'
-import { formatConnectionStatus } from '@/utils/formatConnectionStatus'
+import Image from 'next/image'
+import chatBotImagePath from '../../../../public/assets/icons/chat-bot-svg.svg'
 
 export function HomeComponent() {
-  const { connection } = useInstanceWa()
-
   return (
     <div className={style.homeContainer}>
-      <div className={style.connectionContainer}>
-        {connection?.status === WaConnectionStatus.PENDING && (
-          <Image
-            width={400}
-            height={400}
-            src={connection?.qrcode || ''}
-            alt="qrcode"
-            className={style.connectionQrCode}
-          />
-        )}
+      <section className={style.infosContainer}>
+        <h2>Quer experimentar?</h2>
 
-        <b className={style.connectionStatus}>
-          {formatConnectionStatus(connection?.status || null)}
-        </b>
-      </div>
+        <h3>É bem simples</h3>
+
+        <p>
+          <Link className={style.goToLoginAnchor} href="/login">
+            Clique aqui
+          </Link>{' '}
+          para realizar o cadastro
+        </p>
+
+        <p>
+          Após preencher todos os dados, você será redirecionado para a página
+          de início da sessão.
+        </p>
+      </section>
+
+      <section className={style.imageContainer}>
+        <Image
+          src={chatBotImagePath}
+          alt="chat image"
+          className={style.image}
+        />
+      </section>
     </div>
   )
 }

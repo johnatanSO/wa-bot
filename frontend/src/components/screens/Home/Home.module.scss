@@ -1,25 +1,45 @@
-@import '@/styles/colors.scss';
+@import "@/styles/colors.scss";
 
 .homeContainer {
   padding: 3rem 8rem;
-  flex: 1;
 
-  .connectionContainer {
+  display: flex;
+  gap: 7rem;
+
+  .infosContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    gap: 4rem;
 
-    gap: 2rem;
+    max-width: 60%;
 
-    .connectionQrCode {
-      background: $white-color;
-      padding: 0.5rem;
-      border-radius: 20px;
+    h2 {
+      font-size: 5rem;
+      font-weight: 600;
     }
 
-    .connectionStatus {
-      font-weight: 600;
+    h3 {
+      font-size: 3rem;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .goToLoginAnchor {
+      color: $purple-color-100;
+    }
+  }
+
+  .imageContainer {
+    flex: 1;
+    
+    .image {
+      width: 100%;
+      height: 100%;
     }
   }
 }
