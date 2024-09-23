@@ -25,6 +25,8 @@ export function SocketComponent({ children }: SocketComponentProps) {
       socket.io.engine.on('upgrade', (transport) => {
         setTransport(transport.name)
       })
+
+      socket.emit('getInstance', 'user_id')
     }
 
     function onDisconnect() {
