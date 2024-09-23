@@ -1,8 +1,8 @@
-import { Router } from "express";
-import { instanceRoutes } from "./instance";
+import { Router } from 'express'
+import { userRoutes } from './user'
 
 const routes = Router()
 
-routes.use('/instance/', instanceRoutes)
+routes.use('/user', userRoutes)
 
 export { routes }
