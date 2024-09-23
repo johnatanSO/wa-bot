@@ -10,10 +10,10 @@ import { removeCreds } from './removeCreds'
 import pino from 'pino'
 
 export class Baileys {
-  async onConnect(socket: Socket) {
-    // Essa função salva os dados em arquivos .json na pasta /creds
-    // Não é o melhor método, as credenciais deveriam ser salvar no banco de dados, esta implementação é temporária.
-    const { state, saveCreds } = await useMultiFileAuthState(`./src/creds`)
+  async onConnect(socket: Socket, userId: string) {
+    const { state, saveCreds } = await useMultiFileAuthState(
+      `./src/creds/${userId}`,
+    )
 
     const waSocket = makeWASocket({
       auth: {
@@ -56,7 +56,7 @@ export class Baileys {
           })
         })
 
-        await removeCreds(socket.id)
+        await removeCreds(userId)
       }
 
       if (connection === 'open') {
@@ -82,13 +82,13 @@ export class Baileys {
         if (loggedOut) {
           console.log('Reconectando')
 
-          await removeCreds(socket.id)
+          await removeCreds(userId)
 
-          await this.onConnect(socket)
+          await this.onConnect(socket, userId)
           return
         }
 
-        await removeCreds(socket.id)
+        await removeCreds(userId)
 
         console.log('Conexão encerrada')
       }

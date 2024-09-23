@@ -13,16 +13,20 @@ const io = new Server(httpServer, {
   transports: ['websocket', 'polling'],
 })
 
-io.on('connection', (socket) => {
-  console.log(`Socket conectado - ${socket.id}`)
+io.on('connection', (clientSocket) => {
+  console.log(`Socket conectado - ${clientSocket.id}`)
 
-  socket.on('disconnect', () => {
+  clientSocket.on('disconnect', () => {
     console.log('Socket desconectado')
   })
 
-  const baileys = new Baileys()
+  clientSocket.on('getInstance', (userId) => {
+    console.log('userId', userId)
 
-  baileys.onConnect(socket)
+    const baileys = new Baileys()
+
+    baileys.onConnect(clientSocket, userId)
+  })
 })
 
 httpServer.listen(PORT, () => {
