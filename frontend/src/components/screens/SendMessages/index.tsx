@@ -64,7 +64,7 @@ export function SendMessagesComponent() {
   const sendMessagesButtonDisabled = phones.length === 0 || loadingSendMessages
 
   return (
-    <div>
+    <div className={style.sendMessagesContainer}>
       <section className={style.phonesContainer}>
         {csvFile ? (
           <div>
@@ -121,7 +121,7 @@ export function SendMessagesComponent() {
         )}
       </section>
 
-      <Divider flexItem orientation="vertical" />
+      <Divider className={style.divider} flexItem orientation="vertical" />
 
       <form onSubmit={onSendMessages} className={style.messageForm}>
         <CustomTextField
