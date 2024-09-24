@@ -23,8 +23,13 @@
 
       li {
         a {
+          transition:
+            font-weight 0.2s,
+            color 0.2s;
+            
           &.active {
             color: $purple-color-100;
+            font-weight: 500;
           }
         }
       }
