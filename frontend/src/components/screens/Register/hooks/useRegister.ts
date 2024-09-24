@@ -26,10 +26,8 @@ export function useRegister() {
       http: httpClientProvider,
       registerData,
     })
-      .then(({ data }) => {
-        console.log('data', data)
-
-        router.push('/')
+      .then(() => {
+        router.push('/login')
       })
       .catch((err) => {
         console.log('error', err)

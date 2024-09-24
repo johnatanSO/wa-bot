@@ -1,0 +1,14 @@
+@import '@/styles/colors.scss';
+
+.chatContainer {
+  .formContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  
+    .sendMessageButton {
+      border-radius: 20px;
+    }
+  }
+}
+

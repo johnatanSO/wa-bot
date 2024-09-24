@@ -9,5 +9,5 @@ interface IRequest {
 }
 
 export function loginService({ http, loginData }: IRequest) {
-  return http.post('/user/auth', loginData)
+  return http.post('/user/authenticate', loginData)
 }

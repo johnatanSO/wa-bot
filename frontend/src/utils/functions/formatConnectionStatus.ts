@@ -1,5 +1,5 @@
 import { WaConnectionStatus } from '@/models/enums/WaConnectionStatus'
-import { WaStatusList } from './constants/WaStatusList'
+import { WaStatusList } from '../constants/WaStatusList'
 
 export function formatConnectionStatus(status: WaConnectionStatus | null) {
   if (!status) return '--'

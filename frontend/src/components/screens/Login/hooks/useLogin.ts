@@ -4,6 +4,8 @@ import { loginService } from '@/services/user/login/loginService'
 import { httpClientProvider } from '@/providers/HttpClientProvider'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { saveLocalUser } from '@/utils/functions/storage/saveLocalUser'
+import { saveLocalToken } from '@/utils/functions/storage/saveLocalToken'
 
 export function useLogin() {
   const router = useRouter()
@@ -25,10 +27,13 @@ export function useLogin() {
       http: httpClientProvider,
       loginData,
     })
-      .then(({ data }) => {
-        console.log('Login realizado com sucesso', data)
+      .then(async ({ data }) => {
+        await Promise.all([
+          saveLocalUser(data.user),
+          saveLocalToken(data.token),
+        ])
 
-        router.push('/connection')
+        router.push('/messages')
       })
       .catch((err) => {
         console.log('err', err)

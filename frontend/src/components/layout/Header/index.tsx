@@ -13,7 +13,11 @@ export function Header() {
           </li>
 
           <li>
-            <Link href="/connection">BOT</Link>
+            <Link href="/messages">Mensagens</Link>
+          </li>
+
+          <li>
+            <Link href="/chatbot">Chat</Link>
           </li>
 
           <li>
@@ -21,9 +25,7 @@ export function Header() {
           </li>
 
           <li>
-            <Link href="/login" className={style.loginAnchor}>
-              Login
-            </Link>
+            <Link href="/login">Login</Link>
           </li>
         </ul>
       </nav>

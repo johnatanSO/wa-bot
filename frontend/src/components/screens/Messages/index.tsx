@@ -1,13 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import style from './Connection.module.scss'
+import style from './Messages.module.scss'
 import { useConnectionWa } from './hooks/useConnectionWa'
 import { WaConnectionStatus } from '@/models/enums/WaConnectionStatus'
-import { formatConnectionStatus } from '@/utils/formatConnectionStatus'
+import { formatConnectionStatus } from '@/utils/functions/formatConnectionStatus'
 import { Loading } from '@/components/_ui/Loading'
 
-export function ConnectionComponent() {
+export function MessagesComponent() {
   const { connection } = useConnectionWa()
 
   return (
