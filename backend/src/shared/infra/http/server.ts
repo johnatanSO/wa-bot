@@ -34,6 +34,7 @@ io.on('connection', (clientSocket) => {
   })
 
   clientSocket.on('getInstance', (userId) => {
+    console.log('rodando o GET INSTANCEEEEEEEEEEEEEEEEEEEEee')
     if (!userId) {
       throw new AppError('userId não enviado no emit socket (getInstance)')
     }
