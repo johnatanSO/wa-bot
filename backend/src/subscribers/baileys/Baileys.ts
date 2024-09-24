@@ -8,9 +8,11 @@ import qrcode, { QRCodeToDataURLOptions } from 'qrcode'
 import { WaConnectionStatus } from '../../models/enums/WaConnectionStatus'
 import { removeCreds } from './removeCreds'
 import pino from 'pino'
+import { instances } from '../../shared/infra/http/server'
 
 export class Baileys {
   async onConnect(socket: Socket, userId: string) {
+    console.log('Inciando conexão com o WaSocket')
     const { state, saveCreds } = await useMultiFileAuthState(
       `./src/creds/${userId}`,
     )
@@ -25,6 +27,8 @@ export class Baileys {
       },
       printQRInTerminal: false,
     })
+
+    instances.waSocket[userId] = waSocket
 
     waSocket.ev.on('connection.update', async (update) => {
       const { connection, lastDisconnect, qr } = update || {}
@@ -81,9 +85,6 @@ export class Baileys {
 
         if (loggedOut) {
           console.log('Reconectando')
-
-          await removeCreds(userId)
-
           await this.onConnect(socket, userId)
           return
         }
@@ -97,3 +98,5 @@ export class Baileys {
     waSocket.ev.on('creds.update', saveCreds)
   }
 }
+
+export { instances }

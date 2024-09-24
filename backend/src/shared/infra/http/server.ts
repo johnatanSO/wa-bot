@@ -6,6 +6,11 @@ import { Baileys } from '../../../subscribers/baileys/Baileys'
 const PORT = process.env.SERVER_PORT
 
 const httpServer = createServer(app)
+const baileys = new Baileys()
+
+const instances = {
+  waSocket: {},
+}
 
 const io = new Server(httpServer, {
   pingInterval: 5000,
@@ -23,8 +28,6 @@ io.on('connection', (clientSocket) => {
   clientSocket.on('getInstance', (userId) => {
     console.log('userId', userId)
 
-    const baileys = new Baileys()
-
     baileys.onConnect(clientSocket, userId)
   })
 })
@@ -32,3 +35,5 @@ io.on('connection', (clientSocket) => {
 httpServer.listen(PORT, () => {
   console.log(`Server running in port ${PORT}`)
 })
+
+export { instances }

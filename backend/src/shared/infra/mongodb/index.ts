@@ -4,7 +4,7 @@ dotenv.config()
 
 const MONGO_USERNAME = process.env.MONGO_USERNAME
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD
-const mongoURL = ``
+const mongoURL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@wa-bot-cluster.r7ayi.mongodb.net/?retryWrites=true&w=majority&appName=wa-bot-cluster`
 
 mongoose.connect(mongoURL)
 mongoose.connection
