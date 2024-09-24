@@ -1,50 +1,24 @@
 'use client'
 
-import { socket } from '@/socket'
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, createContext, useState } from 'react'
+import { Socket } from 'socket.io-client'
 
 interface SocketComponentProps {
   children: ReactNode
 }
 
-export const SocketContext = createContext({})
+interface ISocketContext {
+  socket: Socket | null
+  setSocket: (socket: Socket) => void
+}
+
+export const SocketContext = createContext({} as ISocketContext)
 
 export function SocketComponent({ children }: SocketComponentProps) {
-  const [isConnected, setIsConnected] = useState<boolean>(false)
-  const [transport, setTransport] = useState<string>('N/A')
-
-  useEffect(() => {
-    if (socket.connected) {
-      onConnect()
-    }
-
-    function onConnect() {
-      setIsConnected(true)
-      setTransport(socket.io.engine.transport.name)
-
-      socket.io.engine.on('upgrade', (transport) => {
-        setTransport(transport.name)
-      })
-
-      socket.emit('getInstance', 'user_id')
-    }
-
-    function onDisconnect() {
-      setIsConnected(false)
-      setTransport('N/A')
-    }
-
-    socket.on('connect', onConnect)
-    socket.on('disconnect', onDisconnect)
-
-    return () => {
-      socket.off('connect', onConnect)
-      socket.off('disconnect', onDisconnect)
-    }
-  }, [])
+  const [socket, setSocket] = useState<Socket | null>(null)
 
   return (
-    <SocketContext.Provider value={{ isConnected, transport }}>
+    <SocketContext.Provider value={{ socket, setSocket }}>
       {children}
     </SocketContext.Provider>
   )
