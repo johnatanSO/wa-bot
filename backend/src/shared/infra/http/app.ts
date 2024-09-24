@@ -1,6 +1,6 @@
-import cors from 'cors'
-// import '../../container'
 import 'reflect-metadata'
+import '../../container'
+import cors from 'cors'
 import 'express-async-errors'
 import * as dotenv from 'dotenv'
 import { routes } from './routes'

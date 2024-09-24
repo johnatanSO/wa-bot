@@ -8,12 +8,9 @@ const mongoURL = ``
 
 mongoose.connect(mongoURL)
 mongoose.connection
-  .on(
-    'error',
-    console.error.bind(console, 'MongoDB connection error'),
-  )
+  .on('error', console.error.bind(console, 'MongoDB connection error'))
   .once('open', () => {
     console.log('MongoDB connection success')
   })
 
-export default mongoose
+export { mongoose }

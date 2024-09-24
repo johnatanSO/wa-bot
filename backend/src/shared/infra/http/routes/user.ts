@@ -5,7 +5,7 @@ const userController = new UserController()
 
 const userRoutes = Router()
 
-userRoutes.post('/auth', userController.authenticate)
+userRoutes.post('/authenticate', userController.authenticate)
 
 userRoutes.post('/register', userController.register)
 
