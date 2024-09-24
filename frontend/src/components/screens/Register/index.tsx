@@ -4,9 +4,10 @@ import { CustomTextField } from '@/components/_ui/CustomTextField'
 import { useRegister } from './hooks/useRegister'
 import style from './Register.module.scss'
 import Link from 'next/link'
+import { Loading } from '@/components/_ui/Loading'
 
 export function RegisterComponent() {
-  const { onRegister, handleSubmit, register } = useRegister()
+  const { onRegister, handleSubmit, register, isSubmitting } = useRegister()
 
   return (
     <section className={style.registerContainer}>
@@ -36,7 +37,7 @@ export function RegisterComponent() {
           />
 
           <button type="submit" className={style.submitButton}>
-            Confirmar
+            {isSubmitting ? <Loading /> : 'Confirmar'}
           </button>
 
           <p>

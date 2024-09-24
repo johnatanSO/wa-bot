@@ -31,6 +31,13 @@ export function useRegister() {
       registerData,
     })
       .then(() => {
+        setAlertNotifyConfigs({
+          ...alertNotifyConfigs,
+          open: true,
+          text: 'Usuário cadastrado com sucesso',
+          type: AlertNotifyType.SUCCESS,
+        })
+
         router.push('/login')
       })
       .catch((err) => {

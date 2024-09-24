@@ -4,9 +4,10 @@ import { CustomTextField } from '@/components/_ui/CustomTextField'
 import { useLogin } from './hooks/useLogin'
 import style from './Login.module.scss'
 import Link from 'next/link'
+import { Loading } from '@/components/_ui/Loading'
 
 export function LoginComponent() {
-  const { onLogin, handleSubmit, register } = useLogin()
+  const { onLogin, handleSubmit, register, isSubmitting } = useLogin()
 
   return (
     <section className={style.loginContainer}>
@@ -29,7 +30,7 @@ export function LoginComponent() {
           />
 
           <button type="submit" className={style.submitButton}>
-            Confirmar
+            {isSubmitting ? <Loading /> : 'Confirmar'}
           </button>
 
           <p>
