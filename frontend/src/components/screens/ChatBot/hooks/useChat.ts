@@ -15,7 +15,7 @@ export function useChat() {
   })
 
   async function onSendMessage(messageData: IMessageForm) {
-    console.log('data', messageData)
+    console.log('messageData', messageData)
   }
 
   return {

@@ -1,4 +1,4 @@
-@import '@/styles/colors.scss';
+@import "@/styles/colors.scss";
 
 .headerContainer {
   display: flex;
@@ -20,6 +20,14 @@
 
       list-style-type: none;
       gap: 2rem;
+
+      li {
+        a {
+          &.active {
+            color: $purple-color-100;
+          }
+        }
+      }
     }
   }
 }

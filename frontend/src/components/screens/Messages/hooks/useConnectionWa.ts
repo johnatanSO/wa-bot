@@ -14,6 +14,7 @@ export function useConnectionWa() {
     if (!user) return
 
     clientSocket.emit('getInstance', user._id)
+
     clientSocket.on('connectionWa', ({ connection }) => {
       console.log('connection', connection)
       setConnection(connection)
@@ -30,8 +31,8 @@ export function useConnectionWa() {
       reconnectionDelayMax: 5000,
     })
 
-    setSocket(clientSocket)
     getInstanceWa(clientSocket)
+    setSocket(clientSocket)
 
     return () => {
       clientSocket.off('connectionWa')
