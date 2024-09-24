@@ -29,12 +29,16 @@ export function LoginComponent() {
             {...register('password')}
           />
 
-          <button type="submit" className={style.submitButton}>
+          <button
+            disabled={isSubmitting}
+            type="submit"
+            className={style.submitButton}
+          >
             {isSubmitting ? <Loading /> : 'Confirmar'}
           </button>
 
           <p>
-            É novo aqui?{' '}
+            É novo aqui?{'  '}
             <Link className={style.goToLoginAnchor} href="/register">
               Criar conta
             </Link>

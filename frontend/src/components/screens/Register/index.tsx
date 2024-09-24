@@ -36,12 +36,16 @@ export function RegisterComponent() {
             {...register('confirmPassword')}
           />
 
-          <button type="submit" className={style.submitButton}>
+          <button
+            disabled={isSubmitting}
+            type="submit"
+            className={style.submitButton}
+          >
             {isSubmitting ? <Loading /> : 'Confirmar'}
           </button>
 
           <p>
-            Já possui uma conta?{' '}
+            Já possui uma conta?{'  '}
             <Link className={style.goToLoginAnchor} href="/login">
               Fazer login
             </Link>
