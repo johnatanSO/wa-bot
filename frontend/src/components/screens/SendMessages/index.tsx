@@ -11,6 +11,8 @@ export function SendMessagesComponent() {
   const [phoneInput, setPhoneInput] = useState<string>('')
   const [csvFile, setCsvFile] = useState<File | null>(null)
   const [loadingReadCsvFile, setLoadingReadCsvFile] = useState<boolean>(false)
+  const [loadingSendMessages, setLoadingSendMessages] = useState<boolean>(false)
+  const [messageText, setMessageText] = useState<string>('')
 
   function onAddPhone(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -43,6 +45,23 @@ export function SendMessagesComponent() {
 
     setLoadingReadCsvFile(false)
   }
+
+  async function onSendMessages(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    setLoadingSendMessages(true)
+
+    setTimeout(() => {}, 3000)
+
+    setLoadingSendMessages(false)
+
+    // await sendMessagesService({
+    //   phones,
+    //   messageText,
+    // })
+  }
+
+  const sendMessagesButtonDisabled = phones.length === 0 || loadingSendMessages
 
   return (
     <div>
@@ -78,7 +97,7 @@ export function SendMessagesComponent() {
 
           <button
             disabled={loadingReadCsvFile}
-            type="button"
+            type="submit"
             className={style.addNewPhoneButton}
           >
             <FontAwesomeIcon icon={faPlus} className={style.icon} />
@@ -104,17 +123,26 @@ export function SendMessagesComponent() {
 
       <Divider flexItem orientation="vertical" />
 
-      <section className={style.messageContainer}>
+      <form onSubmit={onSendMessages} className={style.messageForm}>
         <CustomTextField
           label="Mensagem"
           placeholder="Digite a mensagem que deseja enviar"
           multiline
           rows={5}
+          value={messageText}
+          onChange={(event) => {
+            setMessageText(event.target.value)
+          }}
         />
-        <button type="button" className={style.sendMessagesButton}>
+
+        <button
+          type="submit"
+          className={style.sendMessagesButton}
+          disabled={sendMessagesButtonDisabled}
+        >
           Enviar
         </button>
-      </section>
+      </form>
     </div>
   )
 }
