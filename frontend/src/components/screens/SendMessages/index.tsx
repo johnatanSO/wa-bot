@@ -140,7 +140,7 @@ export function SendMessagesComponent() {
           className={style.sendMessagesButton}
           disabled={sendMessagesButtonDisabled}
         >
-          Enviar
+          Enviar mensagens
         </button>
       </form>
     </div>
