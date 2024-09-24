@@ -3,6 +3,7 @@ import { createServer } from 'http'
 import { Server } from 'socket.io'
 import { Baileys } from '../../../subscribers/baileys/Baileys'
 import { WASocket } from '@whiskeysockets/baileys'
+import { AppError } from '../../errors/AppError'
 
 const PORT = process.env.SERVER_PORT
 
@@ -33,7 +34,9 @@ io.on('connection', (clientSocket) => {
   })
 
   clientSocket.on('getInstance', (userId) => {
-    console.log('userId', userId)
+    if (!userId) {
+      throw new AppError('userId não enviado no emit socket (getInstance)')
+    }
 
     baileys.onConnect(clientSocket, userId)
   })
