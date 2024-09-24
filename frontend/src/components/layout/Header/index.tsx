@@ -4,7 +4,7 @@ import style from './Header.module.scss'
 export function Header() {
   return (
     <header className={style.headerContainer}>
-      <h1>Chat bot</h1>
+      <h1>JChat</h1>
 
       <nav>
         <ul>

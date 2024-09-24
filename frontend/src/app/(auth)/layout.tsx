@@ -2,8 +2,11 @@ import type { Metadata } from 'next'
 import '@/styles/global.scss'
 
 export const metadata: Metadata = {
-  title: 'Whatsapp Bot',
-  description: 'Whatsapp Bot Messages',
+  title: 'JChat',
+  description: 'Realize a autenticação',
+  icons: {
+    icon: '../../../public/assets/icons/chat-bot-svg.svg',
+  },
 }
 
 export default function RootLayout({

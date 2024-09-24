@@ -5,8 +5,12 @@ import { AlertContextComponent } from '@/contexts/alertContext'
 import { SocketComponent } from '@/contexts/socketContext'
 
 export const metadata: Metadata = {
-  title: 'Whatsapp Bot',
-  description: 'Whatsapp Bot Messages',
+  title: 'JChat',
+  description:
+    'Chat Bot com funcionalidade de envio de mensagens em massa através do whatsapp.',
+  icons: {
+    icon: '../../../public/assets/icons/chat-bot-svg.svg',
+  },
 }
 
 export default function RootLayout({

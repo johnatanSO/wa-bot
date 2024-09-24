@@ -1,6 +1,9 @@
 @import '@/styles/colors.scss';
 
 .chatContainer {
+  display: flex;
+  flex-direction: column;
+  
   .formContainer {
     display: flex;
     align-items: center;
