@@ -18,7 +18,11 @@ export function MessagesComponent() {
         <div className={style.connectionContainer}>
           {connection?.status === WaConnectionStatus.PENDING && (
             <>
-              <h2>Leia o QR Code</h2>
+              <h2>Leia o QR Code para começar</h2>
+              <p>
+                Após a leitura, o sistema irá se conectar com o whatsapp e você
+                poderá realizar o envio de mensagens
+              </p>
 
               <Image
                 width={400}
