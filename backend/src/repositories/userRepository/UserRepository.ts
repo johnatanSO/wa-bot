@@ -1,7 +1,7 @@
 import { Model } from 'mongoose'
-import { IUser } from '../../models/interfaces/IUser'
 import { IUserRepository } from './IUserRepository'
 import { UserModel } from '../../models/mongoose/entities/User'
+import { IUser } from '../../models/interfaces/IUser'
 
 export class UserRepository implements IUserRepository {
   model: Model<IUser>
@@ -25,5 +25,9 @@ export class UserRepository implements IUserRepository {
     await newUser.save()
 
     return newUser
+  }
+
+  async findById(userId: string): Promise<IUser> {
+    return await this.model.findById(userId)
   }
 }
