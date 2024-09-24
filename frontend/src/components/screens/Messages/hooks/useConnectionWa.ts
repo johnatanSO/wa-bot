@@ -15,6 +15,7 @@ export function useConnectionWa() {
 
     clientSocket.emit('getInstance', user._id)
     clientSocket.on('connectionWa', ({ connection }) => {
+      console.log('connection', connection)
       setConnection(connection)
     })
   }
@@ -31,6 +32,10 @@ export function useConnectionWa() {
 
     setSocket(clientSocket)
     getInstanceWa(clientSocket)
+
+    return () => {
+      clientSocket.off('connectionWa')
+    }
   }, [])
 
   return {

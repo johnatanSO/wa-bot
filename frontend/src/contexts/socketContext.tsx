@@ -14,7 +14,7 @@ interface ISocketContext {
 
 export const SocketContext = createContext({} as ISocketContext)
 
-export function SocketComponent({ children }: SocketComponentProps) {
+export function SocketContextComponent({ children }: SocketComponentProps) {
   const [socket, setSocket] = useState<Socket | null>(null)
 
   return (

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/global.scss'
+import { AlertContextComponent } from '@/contexts/alertContext'
 
 export const metadata: Metadata = {
   title: 'JChat',
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body>{children}</body>
+      <body>
+        <AlertContextComponent>{children}</AlertContextComponent>
+      </body>
     </html>
   )
 }

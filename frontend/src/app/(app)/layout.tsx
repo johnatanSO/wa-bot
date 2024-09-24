@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import '@/styles/global.scss'
 import { Header } from '@/components/layout/Header'
 import { AlertContextComponent } from '@/contexts/alertContext'
+import { SocketContextComponent } from '@/contexts/socketContext'
 
 export const metadata: Metadata = {
   title: 'JChat',
@@ -20,11 +21,13 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        <AlertContextComponent>
-          <Header />
+        <SocketContextComponent>
+          <AlertContextComponent>
+            <Header />
 
-          {children}
-        </AlertContextComponent>
+            {children}
+          </AlertContextComponent>
+        </SocketContextComponent>
       </body>
     </html>
   )
