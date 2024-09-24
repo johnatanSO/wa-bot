@@ -1,5 +1,6 @@
 import axios, { Axios, AxiosError, AxiosResponse } from 'axios'
 import { IHttpClientProvider } from './IHttpClientProvider'
+import { getLocalToken } from '@/utils/functions/storage/getLocalToken'
 
 export class AxiosHttpClientProvider implements IHttpClientProvider {
   private httpIntance: Axios = axios.create({
@@ -18,10 +19,13 @@ export class AxiosHttpClientProvider implements IHttpClientProvider {
 
     this.httpIntance.interceptors.request.use(
       async (config: any) => {
+        const token = await getLocalToken()
+
         return {
           ...config,
           headers: {
             ...config.headers,
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
         }
       },
