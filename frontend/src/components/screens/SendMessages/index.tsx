@@ -41,9 +41,19 @@ export function SendMessagesComponent() {
   function readCsvFile() {
     setLoadingReadCsvFile(true)
 
-    setTimeout(() => {}, 3000)
+    setTimeout(() => {
+      setPhones([
+        // Dados fakes do .csv
+        '61984022596',
+        '61984022597',
+        '61984022598',
+        '61984022599',
+        '61984022591',
+      ])
+    }, 3000)
 
     setLoadingReadCsvFile(false)
+    setCsvFile(null)
   }
 
   async function onSendMessages(event: FormEvent<HTMLFormElement>) {
@@ -54,6 +64,7 @@ export function SendMessagesComponent() {
     setTimeout(() => {}, 3000)
 
     setLoadingSendMessages(false)
+    setPhones([])
 
     // await sendMessagesService({
     //   phones,
