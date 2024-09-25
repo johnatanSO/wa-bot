@@ -1,5 +1,6 @@
 import { injectable } from 'tsyringe'
-import { instances } from '../../../subscribers/baileys/onConnectWa'
+import { instances } from '../../../shared/infra/http/server'
+import { AppError } from '../../../shared/errors/AppError'
 
 interface IRequest {
   phones: string[]
@@ -10,6 +11,10 @@ interface IRequest {
 @injectable()
 export class SendMultiMessageService {
   async execute({ phones, messageText, userId }: IRequest): Promise<void> {
+    if (phones.length === 0) throw new AppError('Nenhum telefone enviado')
+    if (!messageText) throw new AppError('Mensagem de texto não enviada')
+    if (!userId) throw new AppError('id do usuário não informado')
+
     console.log({
       phones,
       messageText,

@@ -13,4 +13,4 @@ mongoose.connection
     console.log('MongoDB connection success')
   })
 
-export { mongoose }
+export default mongoose
