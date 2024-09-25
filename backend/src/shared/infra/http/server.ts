@@ -3,7 +3,7 @@ import { createServer } from 'http'
 import { Server } from 'socket.io'
 import { WASocket } from '@whiskeysockets/baileys'
 import { AppError } from '../../errors/AppError'
-import { onConnectWa } from '../../../subscribers/baileys/Baileys'
+import { onConnectWa } from '../../../subscribers/baileys/onConnectWa'
 
 const PORT = process.env.SERVER_PORT
 
@@ -35,7 +35,6 @@ io.on('connection', (clientSocket) => {
     }
 
     onConnectWa(clientSocket, userId)
-    console.log('Rodou o onConnectWa')
   })
 })
 

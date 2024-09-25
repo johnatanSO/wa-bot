@@ -1,5 +1,5 @@
 import { injectable } from 'tsyringe'
-import { instances } from '../../../subscribers/baileys/Baileys'
+import { instances } from '../../../subscribers/baileys/onConnectWa'
 
 interface IRequest {
   phones: string[]
