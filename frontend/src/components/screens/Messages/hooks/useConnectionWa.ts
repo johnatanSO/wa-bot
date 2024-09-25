@@ -18,15 +18,20 @@ export function useConnectionWa() {
       socket?.emit('getInstance', user._id)
     }
 
-    socket?.on('connectionWa', ({ connection }) => {
-      console.log('connection', connection)
-      setConnection(connection)
-    })
+    socket?.on('connectionWa', onConnectWa)
+  }
+
+  function onConnectWa({ connection }: { connection: IConnection }) {
+    setConnection(connection)
   }
 
   useEffect(() => {
     if (socket) {
       getInstanceWa()
+    }
+
+    return () => {
+      socket?.off('connectionWa', onConnectWa)
     }
   }, [socket])
 

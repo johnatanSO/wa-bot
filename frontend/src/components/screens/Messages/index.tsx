@@ -6,9 +6,12 @@ import { useConnectionWa } from './hooks/useConnectionWa'
 import { WaConnectionStatus } from '@/models/enums/WaConnectionStatus'
 import { formatConnectionStatus } from '@/utils/functions/formatConnectionStatus'
 import { Loading } from '@/components/_ui/Loading'
+import { useRouter } from 'next/navigation'
 
 export function MessagesComponent() {
   const { connection } = useConnectionWa()
+
+  const router = useRouter()
 
   return (
     <div className={style.homeContainer}>
@@ -46,6 +49,18 @@ export function MessagesComponent() {
           >
             {formatConnectionStatus(connection?.status || null)}
           </b>
+
+          {connection?.status === WaConnectionStatus.CONNECTED && (
+            <button
+              type="button"
+              className={style.goToSendMessagesButton}
+              onClick={() => {
+                router.push('/messages/sendMessages')
+              }}
+            >
+              Começar envio
+            </button>
+          )}
         </div>
       )}
     </div>

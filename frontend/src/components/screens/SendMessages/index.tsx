@@ -1,3 +1,5 @@
+'use client'
+
 import { CustomTextField } from '@/components/_ui/CustomTextField'
 import style from './SendMessages.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
