@@ -74,16 +74,27 @@ export function SendMessagesComponent() {
     // })
   }
 
+  function handleRemovePhone(phone: string) {
+    const newListPhones = phones.filter((oldPhone) => oldPhone !== phone)
+
+    setPhones(newListPhones)
+  }
+
   const sendMessagesButtonDisabled = phones.length === 0 || loadingSendMessages
 
   return (
     <div className={style.sendMessagesContainer}>
       <section className={style.phonesContainer}>
         {csvFile ? (
-          <div>
+          <div className={style.selectedFileContainer}>
             <b>{csvFile.name}</b>
-            <button type="button" onClick={readCsvFile}>
-              Importar
+
+            <button
+              type="button"
+              onClick={readCsvFile}
+              className={style.readFileButton}
+            >
+              Ler arquivo
             </button>
           </div>
         ) : (
@@ -109,7 +120,7 @@ export function SendMessagesComponent() {
           />
 
           <button
-            disabled={loadingReadCsvFile}
+            disabled={loadingReadCsvFile || phoneInput === ''}
             type="submit"
             className={style.addNewPhoneButton}
           >
@@ -126,7 +137,14 @@ export function SendMessagesComponent() {
                 <li key={phone} className={style.phoneItem}>
                   <b>{phone}</b>
 
-                  <FontAwesomeIcon icon={faTrash} className={style.icon} />
+                  <button
+                    onClick={() => {
+                      handleRemovePhone(phone)
+                    }}
+                    className={style.removePhoneButton}
+                  >
+                    <FontAwesomeIcon icon={faTrash} className={style.icon} />
+                  </button>
                 </li>
               )
             })}

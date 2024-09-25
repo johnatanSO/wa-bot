@@ -9,9 +9,9 @@ export function useConnectionWa() {
   async function getInstance(socket: Socket) {
     const user = await getLocalUser()
 
-    socket?.emit('getInstance', user._id)
+    socket.emit('getInstance', user._id)
 
-    socket?.on('connectionWa', ({ connection }) => {
+    socket.on('connectionWa', ({ connection }) => {
       console.log('connection', connection)
       setConnection(connection)
     })

@@ -46,7 +46,10 @@ a {
   text-decoration: none;
   color: inherit;
 
-  transition: filter 0.2s;
+  transition:
+    filter 0.2s,
+    opacity 0.2s,
+    cursor 0.2s;
   cursor: pointer;
 
   &:not(:disabled):hover {
@@ -74,5 +77,4 @@ button {
 }
 
 @media (max-width: 850px) {
-  
 }
