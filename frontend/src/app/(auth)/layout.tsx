@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'JChat',
   description: 'Realize a autenticação',
   icons: {
-    icon: '../../../public/assets/icons/chat-bot-svg.svg',
+    icon: '../../../public/assets/icons/chat-bot.ico',
   },
 }
 

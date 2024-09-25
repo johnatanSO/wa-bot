@@ -1,3 +1,5 @@
+'use client'
+
 import '@/styles/global.scss'
 import { SocketContextComponent } from '@/contexts/socketContext'
 import { useEffect, useState } from 'react'
