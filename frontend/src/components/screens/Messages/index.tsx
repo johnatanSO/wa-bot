@@ -61,6 +61,12 @@ export function MessagesComponent() {
               Começar envio
             </button>
           )}
+
+          {connection?.status === WaConnectionStatus.DISCONNECTED && (
+            <button type="button" className={style.reconnectButton}>
+              Reconectar
+            </button>
+          )}
         </div>
       )}
     </div>

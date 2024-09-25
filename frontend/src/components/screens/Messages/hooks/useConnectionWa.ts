@@ -1,37 +1,46 @@
-import { SocketContext } from '@/contexts/socketContext'
 import { IConnection } from '@/models/interfaces/IConnection'
 import { getLocalUser } from '@/utils/functions/storage/getLocalUser'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { io, Socket } from 'socket.io-client'
 
 export function useConnectionWa() {
-  const { socket } = useContext(SocketContext)
-
   const [connection, setConnection] = useState<IConnection | null>(null)
 
-  async function getInstanceWa() {
+  async function getInstance(socket: Socket) {
     const user = await getLocalUser()
-
-    if (!user) return
 
     socket?.emit('getInstance', user._id)
 
     socket?.on('connectionWa', ({ connection }) => {
+      console.log('connection', connection)
       setConnection(connection)
-      socket?.off('getInstance')
     })
   }
 
   useEffect(() => {
-    console.log('Socket atualizou')
+    const socket = io(process.env.NEXT_PUBLIC_END_POINT || '', {
+      forceNew: true,
+      transports: ['websocket', 'polling'],
+      reconnection: true,
+      reconnectionAttempts: Infinity,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+    })
 
-    if (socket) {
-      getInstanceWa()
-    }
+    socket.on('connect', () => {
+      console.log('Conexão com o backend estabelecida com sucesso')
+    })
+
+    socket.on('disconnect', () => {
+      console.log('Conexão com o backend perdida')
+    })
+
+    getInstance(socket)
 
     return () => {
-      socket?.off('connectionWa')
+      socket.close()
     }
-  }, [socket])
+  }, [])
 
   return {
     connection,
