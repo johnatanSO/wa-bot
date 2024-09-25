@@ -20,6 +20,14 @@ export default function RootLayout({
       reconnectionDelayMax: 5000,
     })
 
+    clientSocket.on('connect', () => {
+      console.log('Conexão com o backend estabelecida com sucesso')
+    })
+
+    clientSocket.on('disconnect', () => {
+      console.log('Conexão com o backend perdida')
+    })
+
     setSocket(clientSocket)
 
     return () => {

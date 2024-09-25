@@ -10,7 +10,7 @@ export function Header() {
   const options = [
     { path: '/', title: 'Início' },
     { path: '/messages', title: 'Mensagens' },
-    { path: '/chatbot', title: 'Chat' },
+    // { path: '/chatbot', title: 'Chat' }, // Não implementado ainda...
     { path: '/about', title: 'Sobre' },
   ]
 
