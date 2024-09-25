@@ -28,6 +28,12 @@ export class CreateNewService {
     password,
     confirmPassword,
   }: IRequest): Promise<IResponse> {
+    if (!email) throw new AppError('E-mail não informado')
+    if (!password) throw new AppError('Senha não informada')
+    if (!confirmPassword) {
+      throw new AppError('Confirmação de senha não informada')
+    }
+
     const userAlreadyExist = await this.userRepository.findByEmail(email)
 
     if (userAlreadyExist) {
