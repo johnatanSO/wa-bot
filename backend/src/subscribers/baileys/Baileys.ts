@@ -13,7 +13,7 @@ import { instances } from '../../shared/infra/http/server'
 export class Baileys {
   async onConnect(socket: Socket, userId: string) {
     try {
-      console.log('Inciando conexão com o WaSocket')
+      console.log('Inciando conexão com o WaSocket', userId)
 
       const { state, saveCreds } = await useMultiFileAuthState(
         `./src/creds/${userId}`,
@@ -73,8 +73,8 @@ export class Baileys {
             connection: {
               status: WaConnectionStatus.CONNECTED,
               user: {
-                name: waSocket.user.name,
-                phone: waSocket.user.id.split(':'),
+                name: waSocket?.user?.name || '--',
+                phone: waSocket?.user?.id || '--',
               },
             },
           })
