@@ -18,11 +18,9 @@ export function useConnectionWa() {
       socket?.emit('getInstance', user._id)
     }
 
-    socket?.on('connectionWa', onConnectWa)
-  }
-
-  function onConnectWa({ connection }: { connection: IConnection }) {
-    setConnection(connection)
+    socket?.on('connectionWa', ({ connection }) => {
+      setConnection(connection)
+    })
   }
 
   useEffect(() => {
@@ -31,7 +29,7 @@ export function useConnectionWa() {
     }
 
     return () => {
-      socket?.off('connectionWa', onConnectWa)
+      socket?.off('connectionWa')
     }
   }, [socket])
 
