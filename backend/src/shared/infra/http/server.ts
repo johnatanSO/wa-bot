@@ -1,14 +1,13 @@
 import { app } from './app'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
-import { Baileys } from '../../../subscribers/baileys/Baileys'
 import { WASocket } from '@whiskeysockets/baileys'
 import { AppError } from '../../errors/AppError'
+import { onConnectWa } from '../../../subscribers/baileys/Baileys'
 
 const PORT = process.env.SERVER_PORT
 
 const httpServer = createServer(app)
-const baileys = new Baileys()
 
 interface IInstances {
   waSocket: {
@@ -30,16 +29,17 @@ io.on('connection', (clientSocket) => {
   console.log(`Socket conectado - ${clientSocket.id}`)
 
   clientSocket.on('disconnect', () => {
-    console.log('Socket desconectado')
+    console.log(`Socket desconectado - ${clientSocket.id}`)
   })
 
-  clientSocket.on('getInstance', (userId) => {
-    console.log('rodando o GET INSTANCEEEEEEEEEEEEEEEEEEEEee')
+  clientSocket.on('getInstance', async (userId) => {
+    console.log('Rodando o getInstance')
     if (!userId) {
       throw new AppError('userId não enviado no emit socket (getInstance)')
     }
 
-    baileys.onConnect(clientSocket, userId)
+    onConnectWa(clientSocket, userId)
+    console.log('Rodou o onConnectWa')
   })
 })
 
