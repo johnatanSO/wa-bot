@@ -14,7 +14,7 @@ export function useConnectionWa() {
 
     if (!user) return
 
-    if (connection?.status !== WaConnectionStatus.CONNECTED) {
+    if (!connection) {
       socket?.emit('getInstance', user._id)
     }
 
