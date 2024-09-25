@@ -13,7 +13,14 @@ export default function RootLayout({
   const [socket, setSocket] = useState<Socket | null>(null)
 
   useEffect(() => {
-    const clientSocket = io(process.env.NEXT_PUBLIC_END_POINT || '')
+    const clientSocket = io(process.env.NEXT_PUBLIC_END_POINT || '', {
+      forceNew: true,
+      transports: ['websocket', 'polling'],
+      reconnection: true,
+      reconnectionAttempts: Infinity,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+    })
 
     setSocket(clientSocket)
 
