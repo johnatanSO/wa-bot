@@ -11,9 +11,12 @@ import { removeCreds } from './removeCreds'
 
 // TODO: Separar essas funções em arquivos únicos
 async function onConnectWa(socket: Socket, userId: string) {
-  console.log('Rodando o onConnectWa - ', {
-    userId,
-  })
+  console.log(
+    '\n\n Rodando o onConnectWa: ',
+    {
+      userId,
+    } + '\n\n',
+  )
 
   try {
     const { state, saveCreds } = await useMultiFileAuthState(
@@ -54,7 +57,7 @@ async function onConnectWa(socket: Socket, userId: string) {
     waSocket.ev.on('creds.update', saveCreds)
 
     instances.waSocket[userId] = waSocket
-    console.log(`Instance WaSocket (${userId}): ${instances.waSocket[userId]}`)
+    console.log(`Instance WaSocket (${userId}): `, instances.waSocket[userId])
   } catch (err) {
     console.log('Erro no onConnect do Baileys - ', err.message)
   }
