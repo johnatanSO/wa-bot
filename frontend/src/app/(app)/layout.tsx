@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Chat Bot com funcionalidade de envio de mensagens em massa através do whatsapp.',
   icons: {
-    icon: '../../../public/assets/icons/chat-bot-svg.svg',
+    icon: '../../../public/assets/icons/chat-bot.ico',
   },
 }
 

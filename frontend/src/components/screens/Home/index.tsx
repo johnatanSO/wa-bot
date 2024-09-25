@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import style from './Home.module.scss'
 import Image from 'next/image'
-import chatBotImagePath from '../../../../public/assets/icons/chat-bot-svg.svg'
+import chatBotImagePath from '../../../../public/assets/icons/chat-bot.svg'
 
 export function HomeComponent() {
   return (

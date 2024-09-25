@@ -19,11 +19,7 @@ const instances: IInstances = {
   waSocket: {},
 }
 
-const io = new Server(httpServer, {
-  pingInterval: 5000,
-  pingTimeout: 3600000,
-  transports: ['websocket', 'polling'],
-})
+const io = new Server(httpServer)
 
 io.on('connection', (clientSocket) => {
   console.log(`Socket conectado - ${clientSocket.id}`)

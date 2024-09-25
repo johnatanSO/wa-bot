@@ -27,6 +27,10 @@ export function useConnectionWa() {
     if (socket) {
       getInstanceWa()
     }
+
+    return () => {
+      socket?.off('connectionWa')
+    }
   }, [socket])
 
   return {
