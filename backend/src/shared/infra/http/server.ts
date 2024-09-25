@@ -29,7 +29,9 @@ io.on('connection', (clientSocket) => {
   })
 
   clientSocket.on('getInstance', async (userId) => {
-    console.log('Rodando o getInstance')
+    console.log(
+      '\n\n\n\n FAZENDO A BUSCA DA INSTÂNCIA DO WHATSAPP CONNECTION \n\n\n\n\n',
+    )
     if (!userId) {
       throw new AppError('userId não enviado no emit socket (getInstance)')
     }
