@@ -7,9 +7,6 @@ export const metadata: Metadata = {
   title: 'JChat',
   description:
     'Chat Bot com funcionalidade de envio de mensagens em massa através do whatsapp.',
-  icons: {
-    icon: '../../../public/assets/icons/chat-bot.ico',
-  },
 }
 
 export default function RootLayout({

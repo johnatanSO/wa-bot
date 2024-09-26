@@ -5,9 +5,6 @@ import { AlertContextComponent } from '@/contexts/alertContext'
 export const metadata: Metadata = {
   title: 'JChat',
   description: 'Realize a autenticação',
-  icons: {
-    icon: '../../../public/assets/icons/chat-bot.ico',
-  },
 }
 
 export default function RootLayout({
