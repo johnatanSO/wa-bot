@@ -12,6 +12,7 @@ export function Header() {
     { path: '/messages', title: 'Mensagens' },
     // { path: '/chatbot', title: 'Chat' }, // Não implementado ainda...
     { path: '/about', title: 'Sobre' },
+    { path: '/login', title: 'Login' },
   ]
 
   return (

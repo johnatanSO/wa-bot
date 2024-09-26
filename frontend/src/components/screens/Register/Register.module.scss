@@ -10,6 +10,8 @@
     gap: 1rem;
     flex-direction: column;
 
+    animation: appear 0.2s;
+
     .title {
       font-weight: 600;
       margin-bottom: 0.5rem;
@@ -26,7 +28,7 @@
       }
 
       .submitButton {
-        padding: 1.3rem;
+        height: 55px;
         border-radius: 20px;
 
         font-size: 0.875rem;
@@ -43,5 +45,14 @@
         text-decoration: underline;
       }
     }
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
