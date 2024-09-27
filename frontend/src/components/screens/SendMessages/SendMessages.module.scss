@@ -2,7 +2,10 @@
 
 .sendMessagesContainer {
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
+  padding: 3rem 8rem;
+
+  flex: 1;
 
   .phonesContainer {
     flex: 1;
@@ -10,7 +13,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 
     .selectFileButton {
       background: $blue-color-100;
@@ -21,9 +24,7 @@
       font-size: 0.875rem;
       font-weight: 500;
 
-      flex: 1;
-
-      padding: 1rem 1.2rem;
+      padding: 1rem 1.3rem;
     }
 
     .selectedFileContainer {
@@ -32,7 +33,6 @@
       gap: 2rem;
 
       .readFileButton {
-        
       }
     }
 
@@ -40,8 +40,15 @@
       display: flex;
       gap: 1rem;
 
-      input {
+      .input {
         flex: 1;
+      }
+
+      .addNewPhoneButton {
+        padding: 0rem 3rem;
+        border-radius: 20px;
+        background: $purple-color-100;
+        border: none;
       }
     }
 
@@ -52,12 +59,20 @@
 
       .phoneItem {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         gap: 1rem;
+        background: $gray-color-500;
+        padding: 1rem 1.5rem;
+        border-radius: 20px;
 
         .removePhoneButton {
+          background: none;
+          color: $red-color-100;
+          border: none;
+          
           .icon {
-
+            height: 1.2rem;
           }
         }
       }
@@ -74,12 +89,11 @@
 
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 
     input {
       background: $gray-color-800;
       border-radius: 20px;
-      flex: 1;
     }
 
     .sendMessagesButton {
@@ -90,8 +104,6 @@
 
       font-size: 0.875rem;
       font-weight: 500;
-
-      flex: 1;
 
       padding: 1rem 1.2rem;
     }

@@ -9,7 +9,7 @@ import { Divider } from '@mui/material'
 import { Loading } from '@/components/_ui/Loading'
 
 export function SendMessagesComponent() {
-  const [phones, setPhones] = useState<string[]>([])
+  const [phones, setPhones] = useState<string[]>(['61984022596'])
   const [phoneInput, setPhoneInput] = useState<string>('')
   const [csvFile, setCsvFile] = useState<File | null>(null)
   const [loadingReadCsvFile, setLoadingReadCsvFile] = useState<boolean>(false)
@@ -18,6 +18,10 @@ export function SendMessagesComponent() {
 
   function onAddPhone(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+
+    const phoneAlreadyExist = phones.find((phone) => phone === phoneInput)
+
+    if (phoneAlreadyExist) return
 
     setPhones((oldPhones) => [...oldPhones, phoneInput])
 
@@ -63,10 +67,10 @@ export function SendMessagesComponent() {
 
     setLoadingSendMessages(true)
 
-    setTimeout(() => {}, 3000)
-
-    setLoadingSendMessages(false)
-    setPhones([])
+    setTimeout(() => {
+      setLoadingSendMessages(false)
+      setPhones([])
+    }, 3000)
 
     // await sendMessagesService({
     //   phones,
@@ -113,6 +117,7 @@ export function SendMessagesComponent() {
             label="Telefone"
             placeholder="Digite o telefone"
             value={phoneInput}
+            className={style.input}
             disabled={loadingReadCsvFile}
             onChange={(event) => {
               setPhoneInput(event.target.value)
@@ -159,7 +164,7 @@ export function SendMessagesComponent() {
           label="Mensagem"
           placeholder="Digite a mensagem que deseja enviar"
           multiline
-          rows={5}
+          rows={10}
           value={messageText}
           onChange={(event) => {
             setMessageText(event.target.value)
@@ -171,7 +176,7 @@ export function SendMessagesComponent() {
           className={style.sendMessagesButton}
           disabled={sendMessagesButtonDisabled}
         >
-          Enviar mensagens
+          {loadingSendMessages ? <Loading /> : 'Enviar mensagens'}
         </button>
       </form>
     </div>
